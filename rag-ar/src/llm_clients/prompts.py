@@ -1,4 +1,4 @@
-prompt_template = """Answer the following question using the provided context.
+prompt_template = """You are a financial analyst. Use the following context to answer the question.
 
 Context:
 {context}
