@@ -1,0 +1,19 @@
+## Input PDFs
+pdf_documents:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/documents.csv
+
+## Vectorstore
+vector_index:
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/vector_index.pkl
+
+## Query input
+queries:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/queries.csv
+
+## Final JSON output
+rag_responses:
+  type: json.JSONDataSet
+  filepath: data/08_reporting/rag_responses.json
