@@ -1,20 +1,27 @@
 import streamlit as st
+from kedro.framework.project import configure_project
 from kedro.framework.session import KedroSession
-from kedro.config import OmegaConfigLoader
+from kedro.runner import SequentialRunner
 import json
+import os
+
+# Ensure working directory is project root
+os.chdir("/Users/samsea/workspace/RAG-AR/rag-ar")
 
 st.title("RAG Application")
 pdf_path = st.text_input("Path to PDF")
 queries = st.text_area("Enter queries (comma-separated)").split(",")
 
 if st.button("Run RAG"):
-    with KedroSession.create() as session:
+    # Configure Kedro project and pass extra_params when creating the session
+    configure_project("rag_ar")
+    with KedroSession.create(extra_params={"pdf_path": pdf_path, "queries": queries}) as session:
         output = session.run(
             tags=["load", "split", "embed", "store", "query", "format"],
-            runner="SequentialRunner",
-            extra_params={
-                "pdf_path": pdf_path,
-                "queries": queries,
-            }
+            runner=SequentialRunner()
         )
-        st.json(output["rag_output"])
+
+        with open("data/08_reporting/rag_responses.json", "r") as f:
+            responses = json.load(f)
+
+        st.json(responses)

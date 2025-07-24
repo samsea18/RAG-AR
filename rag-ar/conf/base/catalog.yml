@@ -1,19 +1,34 @@
-## Input PDFs
-pdf_documents:
-  type: pandas.CSVDataSet
-  filepath: data/01_raw/documents.csv
+# Input PDFs
+documents:
+  type: pickle.PickleDataset
+  filepath: data/01_raw/documents.pkl
 
-## Vectorstore
+# Chunked Text
+chunks:
+  type: pickle.PickleDataset
+  filepath: data/02_intermediate/chunks.pkl
+
+# Embeddings
+embeddings:
+  type: pickle.PickleDataset
+  filepath: data/02_intermediate/embeddings.pkl
+
+# Vectorstore
 vector_index:
-  type: pickle.PickleDataSet
+  type: pickle.PickleDataset
   filepath: data/05_model_input/vector_index.pkl
 
-## Query input
+# Query input
 queries:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/01_raw/queries.csv
 
-## Final JSON output
+# RAG output
+rag_outputs:
+  type: pickle.PickleDataset
+  filepath: data/07_model_output/rag_outputs.pkl
+
+# Final JSON output
 rag_responses:
-  type: json.JSONDataSet
+  type: json.JSONDataset
   filepath: data/08_reporting/rag_responses.json
