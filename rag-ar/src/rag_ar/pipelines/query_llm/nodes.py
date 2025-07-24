@@ -1,5 +1,7 @@
 from typing import List, Dict
+from langchain.vectorstores import FAISS
 from llm_clients.openrouter_client import call_openrouter
+
 
 def query_node(queries: List[str], vectorstore: FAISS, top_k: int, model: str, api_key: str) -> List[Dict]:
     results = []
