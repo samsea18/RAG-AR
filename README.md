@@ -1,4 +1,4 @@
-# RAG-AR: Retrieval-Augmented Generation with Annual Reports
+# Retrieval-Augmented Generation for Equity Valuation
 
 This project builds a Retrieval-Augmented Generation (RAG) pipeline using Kedro for orchestration and Streamlit for interactive querying of corporate annual reports. It enables structured ingestion, intelligent chunking and querying of investor documents such as 10-Ks, 10-Qs and corporate annual reports.
 
