@@ -1,6 +1,7 @@
 import requests
 
 def call_openrouter(prompt: str, query: str, model: str, api_key: str) -> str:
+
     full_prompt = f"""\
     You are a financial analyst working on an equities desk, specializing in company valuation and financial modeling.
     
@@ -12,7 +13,6 @@ def call_openrouter(prompt: str, query: str, model: str, api_key: str) -> str:
     Question:
     {query}
     
-    Respond as if you're preparing an internal memo for a portfolio manager or investment committee. 
     Use precise financial terminology and focus on valuation-relevant insights.
     
     Make the response as concise as possible.

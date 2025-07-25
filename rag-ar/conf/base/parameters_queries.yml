@@ -1,5 +1,6 @@
 queries:
-  - What is the name of the company in this annual report?
-  - What is the company's current ratio?
-  - Estimate the intrinsic value of the company.
+  - What is the name of the company in this annual report? Just provide the name.
+  - What is the company's latest figures on its current assets and current liabilities? Use these to estimate its current ratio (Current Assets/Current Liabilities). Just provide the number.
+  - Estimate the intrinsic value of the company using the assumption of 5% Growth and 30% Margin of Safety. Just provide the number.
+  - What is the company's Net Income Growth (NIG) and Trailing 12 Months Earnings Per Share (TTM EPS)? Use these to calculate its Fair Value via NIG * TTM EPS. If its TTM EPS is <= 0, its value is 0. Just provide the final number.
   - What risks are mentioned?

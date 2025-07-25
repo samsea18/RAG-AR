@@ -1,4 +1,5 @@
-pdf_path: "data/00_inputs"
+pdf_path: "data/00_inputs/Apple_10-K.pdf"
+#pdf_path: "data/00_inputs/DBS_Annual Report 2024.pdf"
 #model: mistralai/mixtral-8x7b-instruct
 model: deepseek/deepseek-r1-distill-llama-70b
 top_k: 10

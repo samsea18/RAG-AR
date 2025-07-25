@@ -1,16 +1,20 @@
-from PyPDF2 import PdfReader
-from pathlib import Path
-import pandas as pd
-from typing import List
+from langchain.document_loaders import PyPDFLoader
+from langchain.schema import Document
+from typing import List, Union
 
+def load_pdf_node(filepaths: Union[str, List[str]]) -> List[Document]:
+    if isinstance(filepaths, str):
+        filepaths = [filepaths]  # wrap single string in list
 
-def load_pdf_node(pdf_path: str) -> List[str]:
-    docs = []
-    for file in Path(pdf_path).glob("*.pdf"):
-        reader = PdfReader(file)
-        text = "\n".join(
-            page.extract_text() for page in reader.pages if page.extract_text()
-        )
-        docs.append(text)
+    all_docs = []
+    for path in filepaths:
+        loader = PyPDFLoader(path)
+        docs = loader.load()
 
-    return docs
+        # Filter out pages with very little text (logos, images, etc.)
+        filtered = [doc for doc in docs if len(doc.page_content.strip()) > 200]
+        for doc in filtered:
+            doc.metadata['source'] = path
+        all_docs.extend(filtered)
+
+    return all_docs
