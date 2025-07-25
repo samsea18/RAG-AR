@@ -10,6 +10,7 @@ from kedro.framework.project import settings
 def query_node(queries: List[str], vectorstore: FAISS, top_k: int, model: str,) -> List[Dict]:
 
     conf_loader = OmegaConfigLoader(conf_source=settings.CONF_SOURCE)
+    print(conf_loader)
     api_key = conf_loader['credentials']['openrouter']['api_key']
 
     results = []
