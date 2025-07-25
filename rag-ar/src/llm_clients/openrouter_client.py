@@ -1,7 +1,22 @@
 import requests
 
 def call_openrouter(prompt: str, query: str, model: str, api_key: str) -> str:
-    full_prompt = f"Answer the following question using the provided context.\nContext:\n{prompt}\n\nQuestion:\n{query}"
+    full_prompt = f"""\
+    You are a financial analyst working on an equities desk, specializing in company valuation and financial modeling.
+    
+    Using the following context from internal reports, financial statements, or earnings call transcripts, provide a concise and professional analysis.
+    
+    Context:
+    {prompt}
+    
+    Question:
+    {query}
+    
+    Respond as if you're preparing an internal memo for a portfolio manager or investment committee. 
+    Use precise financial terminology and focus on valuation-relevant insights.
+    
+    Make the response as concise as possible.
+    """
     response = requests.post(
         "https://openrouter.ai/api/v1/chat/completions",
         headers={"Authorization": f"Bearer {api_key}"},
